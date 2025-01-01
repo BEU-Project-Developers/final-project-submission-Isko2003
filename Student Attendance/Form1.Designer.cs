@@ -39,7 +39,7 @@
             this.SuspendLayout();
             // 
             // panelLogin
-            // 
+            // selamun aleykums
             this.panelLogin.BackColor = System.Drawing.Color.White;
             this.panelLogin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelLogin.Controls.Add(this.btnLogin);
