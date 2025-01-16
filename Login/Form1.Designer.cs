@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using AttendanceSystem;
+using MySql.Data.MySqlClient;
 
 namespace Login
 {
@@ -26,11 +27,12 @@ namespace Login
 
 					int count = Convert.ToInt32(cmd.ExecuteScalar());
 
-					MessageBox.Show("Count: " + count);
-
 					if (count > 0)
 					{
 						MessageBox.Show("Login Successful!");
+                        Form2 form2 = new Form2();
+                        form2.Show();
+
 					}
 					else
 					{

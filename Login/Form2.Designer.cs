@@ -46,6 +46,7 @@
             txtStudentName.Size = new Size(200, 23);
             txtStudentName.TabIndex = 1;
             txtStudentName.Text = "Ismayil";
+            txtStudentName.TextChanged += txtStudentName_TextChanged;
             // 
             // cmbAttendanceStatus
             // 
@@ -120,6 +121,7 @@
             button1.TabIndex = 6;
             button1.Text = "Axtarışa Keçid Et";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // Form2
             // 
