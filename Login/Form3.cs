@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Login.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,19 +13,18 @@ namespace Login
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        public Form3(List<Student> students)
         {
             InitializeComponent();
+            
+            foreach (var  student in students)
+            {
+                dataGridView1.Rows.Add(student.Name, student.Status, student.Date.ToShortDateString());
+            }
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
+
     }
 }

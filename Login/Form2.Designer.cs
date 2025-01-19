@@ -15,6 +15,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             lblTitle = new Label();
             txtStudentName = new TextBox();
             cmbAttendanceStatus = new ComboBox();
@@ -45,7 +46,6 @@
             txtStudentName.PlaceholderText = "Tələbə Adı";
             txtStudentName.Size = new Size(200, 23);
             txtStudentName.TabIndex = 1;
-            txtStudentName.Text = "Ismayil";
             txtStudentName.TextChanged += txtStudentName_TextChanged;
             // 
             // cmbAttendanceStatus
@@ -80,7 +80,7 @@
             // 
             // dataGridView1
             // 
-            dataGridView1.BackgroundColor = Color.Chartreuse;
+            dataGridView1.BackgroundColor = Color.Olive;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { StudentName, AttendanceStatus, Date });
             dataGridView1.Location = new Point(338, 33);
@@ -89,6 +89,7 @@
             dataGridView1.RowTemplate.Height = 24;
             dataGridView1.Size = new Size(450, 150);
             dataGridView1.TabIndex = 5;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // StudentName
             // 
@@ -125,8 +126,9 @@
             // 
             // Form2
             // 
-            BackgroundImage = Login.Properties.Resources.nvidia_logo_3840x2160_19422;
-            ClientSize = new Size(800, 250);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(794, 298);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(btnAdd);
