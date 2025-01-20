@@ -21,11 +21,14 @@
             cmbAttendanceStatus = new ComboBox();
             dateTimePicker1 = new DateTimePicker();
             btnAdd = new Button();
+            button1 = new Button();
             dataGridView1 = new DataGridView();
+            cmbCourse = new ComboBox();
+            studentId = new DataGridViewTextBoxColumn();
             StudentName = new DataGridViewTextBoxColumn();
             AttendanceStatus = new DataGridViewTextBoxColumn();
             Date = new DataGridViewTextBoxColumn();
-            button1 = new Button();
+            Course = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -61,7 +64,7 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(50, 150);
+            dateTimePicker1.Location = new Point(50, 151);
             dateTimePicker1.Name = "dateTimePicker1";
             dateTimePicker1.Size = new Size(200, 23);
             dateTimePicker1.TabIndex = 3;
@@ -69,7 +72,7 @@
             // btnAdd
             // 
             btnAdd.BackColor = Color.CadetBlue;
-            btnAdd.Location = new Point(50, 190);
+            btnAdd.Location = new Point(50, 236);
             btnAdd.Margin = new Padding(0);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(200, 30);
@@ -78,18 +81,47 @@
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.CadetBlue;
+            button1.Location = new Point(338, 236);
+            button1.Margin = new Padding(0);
+            button1.Name = "button1";
+            button1.Size = new Size(200, 30);
+            button1.TabIndex = 6;
+            button1.Text = "Axtarışa Keçid Et";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // dataGridView1
             // 
             dataGridView1.BackgroundColor = Color.Olive;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { StudentName, AttendanceStatus, Date });
-            dataGridView1.Location = new Point(338, 33);
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { studentId, StudentName, AttendanceStatus, Date, Course });
+            dataGridView1.Location = new Point(268, 70);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowHeadersWidth = 44;
             dataGridView1.RowTemplate.Height = 24;
-            dataGridView1.Size = new Size(450, 150);
+            dataGridView1.Size = new Size(628, 150);
             dataGridView1.TabIndex = 5;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // cmbCourse
+            // 
+            cmbCourse.AccessibleName = "";
+            cmbCourse.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCourse.FormattingEnabled = true;
+            cmbCourse.Items.AddRange(new object[] { "Computer Science", "Information and Technologies", "Math", "Science" });
+            cmbCourse.Location = new Point(50, 200);
+            cmbCourse.Name = "cmbCourse";
+            cmbCourse.Size = new Size(200, 23);
+            cmbCourse.Sorted = true;
+            cmbCourse.TabIndex = 7;
+            // 
+            // studentId
+            // 
+            studentId.HeaderText = "studentId";
+            studentId.Name = "studentId";
             // 
             // StudentName
             // 
@@ -100,6 +132,8 @@
             // 
             // AttendanceStatus
             // 
+            this.Load += new System.EventHandler(this.Form2_Load);
+
             AttendanceStatus.HeaderText = "İştirak Statusu";
             AttendanceStatus.MinimumWidth = 6;
             AttendanceStatus.Name = "AttendanceStatus";
@@ -112,23 +146,17 @@
             Date.Name = "Date";
             Date.Width = 125;
             // 
-            // button1
+            // Course
             // 
-            button1.BackColor = Color.CadetBlue;
-            button1.Location = new Point(338, 200);
-            button1.Margin = new Padding(0);
-            button1.Name = "button1";
-            button1.Size = new Size(200, 30);
-            button1.TabIndex = 6;
-            button1.Text = "Axtarışa Keçid Et";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
+            Course.HeaderText = "Course";
+            Course.Name = "Course";
             // 
             // Form2
             // 
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(794, 298);
+            ClientSize = new Size(908, 376);
+            Controls.Add(cmbCourse);
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Controls.Add(btnAdd);
@@ -148,10 +176,13 @@
         private System.Windows.Forms.ComboBox cmbAttendanceStatus;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StudentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AttendanceStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private Button button1;
+        private DataGridView dataGridView1;
+        private ComboBox cmbCourse;
+        private DataGridViewTextBoxColumn studentId;
+        private DataGridViewTextBoxColumn StudentName;
+        private DataGridViewTextBoxColumn AttendanceStatus;
+        private DataGridViewTextBoxColumn Date;
+        private DataGridViewTextBoxColumn Course;
     }
 }
