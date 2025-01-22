@@ -159,6 +159,7 @@
             Controls.Add(dgvStudentData);
             Name = "StudentDashboard";
             Text = "Student Dashboard";
+            Load += StudentDashboard_Load;
             ((System.ComponentModel.ISupportInitialize)dgvStudentData).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -22,6 +22,7 @@ namespace Login
             _studentId = studentId;
         }
 
+
         private void LoadStudentData()
         {
             string connectionString = "Server=localhost;Database=login;Uid=root;Pwd=;";
@@ -48,6 +49,12 @@ namespace Login
                                 string course = reader.GetString("course");
 
                                 dgvStudentData.Rows.Add(id, name, status, date.ToShortDateString(), course);
+
+                                lblStudentId.Text = $"Tələbə ID: {reader["studentId"]}";
+                                lblStudentName.Text = $"Tələbə Adı: {reader["studentName"]}";
+                                lblCourse.Text = $"Kurs: {reader["course"]}";
+                                lblAttendanceStatus.Text = $"Davamiyyət: {reader["attendanceStatus"]}";
+                                lblAttendanceDate.Text = $"Davamiyyət Tarixi: {Convert.ToDateTime(reader["AttendanceDate"]).ToShortDateString()}";
                             }
                         }
                     }
