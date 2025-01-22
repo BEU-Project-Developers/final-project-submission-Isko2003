@@ -16,7 +16,6 @@ namespace Login
                 return;
             }
 
-            // SQL bağlantı sətri
             string connectionString = "Server=localhost;Database=login;Uid=root;Pwd=;";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -25,7 +24,6 @@ namespace Login
                 {
                     connection.Open();
 
-                    // İstifadəçinin məlumatını yoxlamaq üçün SQL sorğusu
                     string query = "SELECT password FROM users WHERE email = @Email";
 
                     using (MySqlCommand command = new MySqlCommand(query, connection))
@@ -34,16 +32,15 @@ namespace Login
 
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            if (reader.Read()) // E-poçt tapıldı
+                            if (reader.Read()) 
                             {
                                 string hashedPassword = reader.GetString("password");
 
-                                // Şifrəni yoxlama
+                                
                                 if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
                                 {
                                     MessageBox.Show("Giriş uğurludur!", "Məlumat", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                    // Form2 (əsas forma) açılır
                                     Form2 mainForm = new Form2();
                                     mainForm.Show();
                                     this.Hide();
