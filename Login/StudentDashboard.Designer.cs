@@ -27,100 +27,142 @@
         /// the contents of this method with the code editor.
         /// </summary>
 
+        private Label lblTitle;
+        private Label lblStudentName;
+        private Label lblStudentId;
+        private Label lblCourse;
+        private Label lblAttendanceStatus;
+        private Label lblAttendanceDate;
+        private DataGridView dgvStudentData;
+        private DataGridViewTextBoxColumn studentId;
+        private DataGridViewTextBoxColumn StudentName;
+        private DataGridViewTextBoxColumn AttendanceStatus;
+        private DataGridViewTextBoxColumn attendanceDate;
+        private DataGridViewTextBoxColumn Course;
+
         private void InitializeComponent()
         {
-            this.lblStudentName = new System.Windows.Forms.Label();
-            this.lblStudentId = new System.Windows.Forms.Label();
-            this.lblCourse = new System.Windows.Forms.Label();
-            this.lblAttendanceStatus = new System.Windows.Forms.Label();
-            this.lblAttendanceDate = new System.Windows.Forms.Label();
-            this.dgvStudentData = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentData)).BeginInit();
-            this.SuspendLayout();
-
+            lblTitle = new Label();
+            lblStudentName = new Label();
+            lblStudentId = new Label();
+            lblCourse = new Label();
+            lblAttendanceStatus = new Label();
+            lblAttendanceDate = new Label();
+            dgvStudentData = new DataGridView();
+            studentId = new DataGridViewTextBoxColumn();
+            StudentName = new DataGridViewTextBoxColumn();
+            AttendanceStatus = new DataGridViewTextBoxColumn();
+            attendanceDate = new DataGridViewTextBoxColumn();
+            Course = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dgvStudentData).BeginInit();
+            SuspendLayout();
+            // 
+            // lblTitle
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
+            lblTitle.Location = new Point(50, 20);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(183, 24);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Tələbə Dashboard";
             // 
             // lblStudentName
             // 
-            this.lblStudentName.AutoSize = true;
-            this.lblStudentName.Location = new System.Drawing.Point(30, 30);
-            this.lblStudentName.Name = "lblStudentName";
-            this.lblStudentName.Size = new System.Drawing.Size(80, 13);
-            this.lblStudentName.TabIndex = 0;
-            this.lblStudentName.Text = "Tələbə Adı: ";
-
+            lblStudentName.AutoSize = true;
+            lblStudentName.Font = new Font("Microsoft Sans Serif", 10F);
+            lblStudentName.Location = new Point(50, 60);
+            lblStudentName.Name = "lblStudentName";
+            lblStudentName.Size = new Size(84, 17);
+            lblStudentName.TabIndex = 1;
+            lblStudentName.Text = "Tələbə Adı: ";
             // 
             // lblStudentId
             // 
-            this.lblStudentId.AutoSize = true;
-            this.lblStudentId.Location = new System.Drawing.Point(30, 60);
-            this.lblStudentId.Name = "lblStudentId";
-            this.lblStudentId.Size = new System.Drawing.Size(56, 13);
-            this.lblStudentId.TabIndex = 1;
-            this.lblStudentId.Text = "Tələbə ID:";
-
+            lblStudentId.AutoSize = true;
+            lblStudentId.Font = new Font("Microsoft Sans Serif", 10F);
+            lblStudentId.Location = new Point(50, 90);
+            lblStudentId.Name = "lblStudentId";
+            lblStudentId.Size = new Size(77, 17);
+            lblStudentId.TabIndex = 2;
+            lblStudentId.Text = "Tələbə ID: ";
             // 
             // lblCourse
             // 
-            this.lblCourse.AutoSize = true;
-            this.lblCourse.Location = new System.Drawing.Point(30, 90);
-            this.lblCourse.Name = "lblCourse";
-            this.lblCourse.Size = new System.Drawing.Size(39, 13);
-            this.lblCourse.TabIndex = 2;
-            this.lblCourse.Text = "Kurs: ";
-
+            lblCourse.AutoSize = true;
+            lblCourse.Font = new Font("Microsoft Sans Serif", 10F);
+            lblCourse.Location = new Point(50, 120);
+            lblCourse.Name = "lblCourse";
+            lblCourse.Size = new Size(45, 17);
+            lblCourse.TabIndex = 3;
+            lblCourse.Text = "Kurs: ";
             // 
             // lblAttendanceStatus
             // 
-            this.lblAttendanceStatus.AutoSize = true;
-            this.lblAttendanceStatus.Location = new System.Drawing.Point(30, 120);
-            this.lblAttendanceStatus.Name = "lblAttendanceStatus";
-            this.lblAttendanceStatus.Size = new System.Drawing.Size(81, 13);
-            this.lblAttendanceStatus.TabIndex = 3;
-            this.lblAttendanceStatus.Text = "Devamiyyət: ";
-
+            lblAttendanceStatus.AutoSize = true;
+            lblAttendanceStatus.Font = new Font("Microsoft Sans Serif", 10F);
+            lblAttendanceStatus.Location = new Point(50, 150);
+            lblAttendanceStatus.Name = "lblAttendanceStatus";
+            lblAttendanceStatus.Size = new Size(89, 17);
+            lblAttendanceStatus.TabIndex = 4;
+            lblAttendanceStatus.Text = "Davamiyyət: ";
             // 
             // lblAttendanceDate
             // 
-            this.lblAttendanceDate.AutoSize = true;
-            this.lblAttendanceDate.Location = new System.Drawing.Point(30, 150);
-            this.lblAttendanceDate.Name = "lblAttendanceDate";
-            this.lblAttendanceDate.Size = new System.Drawing.Size(89, 13);
-            this.lblAttendanceDate.TabIndex = 4;
-            this.lblAttendanceDate.Text = "Devamiyyət Tarixi:";
-
+            lblAttendanceDate.AutoSize = true;
+            lblAttendanceDate.Font = new Font("Microsoft Sans Serif", 10F);
+            lblAttendanceDate.Location = new Point(50, 180);
+            lblAttendanceDate.Name = "lblAttendanceDate";
+            lblAttendanceDate.Size = new Size(127, 17);
+            lblAttendanceDate.TabIndex = 5;
+            lblAttendanceDate.Text = "Davamiyyət Tarixi: ";
             // 
             // dgvStudentData
             // 
-            this.dgvStudentData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudentData.Location = new System.Drawing.Point(30, 180);
-            this.dgvStudentData.Name = "dgvStudentData";
-            this.dgvStudentData.Size = new System.Drawing.Size(800, 250);
-            this.dgvStudentData.TabIndex = 5;
-
+            dgvStudentData.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvStudentData.Columns.AddRange(new DataGridViewColumn[] { studentId, StudentName, AttendanceStatus, attendanceDate, Course });
+            dgvStudentData.Location = new Point(50, 220);
+            dgvStudentData.Name = "dgvStudentData";
+            dgvStudentData.RowTemplate.Height = 30;
+            dgvStudentData.Size = new Size(600, 200);
+            dgvStudentData.TabIndex = 6;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            studentId.Name = "Tələbə ID";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            StudentName.Name = "Tələbə Adı";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            Course.Name = "Kurs";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            AttendanceStatus.Name = "Davamiyyət Statusu";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            attendanceDate.Name = "Davamiyyət Tarixi";
             // 
             // StudentDashboard
             // 
-            this.ClientSize = new System.Drawing.Size(860, 450);
-            this.Controls.Add(this.dgvStudentData);
-            this.Controls.Add(this.lblAttendanceDate);
-            this.Controls.Add(this.lblAttendanceStatus);
-            this.Controls.Add(this.lblCourse);
-            this.Controls.Add(this.lblStudentId);
-            this.Controls.Add(this.lblStudentName);
-            this.Name = "StudentDashboard";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tələbə Paneli";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentData)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            ClientSize = new Size(700, 450);
+            Controls.Add(lblTitle);
+            Controls.Add(lblStudentName);
+            Controls.Add(lblStudentId);
+            Controls.Add(lblCourse);
+            Controls.Add(lblAttendanceStatus);
+            Controls.Add(lblAttendanceDate);
+            Controls.Add(dgvStudentData);
+            Name = "StudentDashboard";
+            Text = "Student Dashboard";
+            ((System.ComponentModel.ISupportInitialize)dgvStudentData).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
-
-        private System.Windows.Forms.Label lblStudentName;
-        private System.Windows.Forms.Label lblStudentId;
-        private System.Windows.Forms.Label lblCourse;
-        private System.Windows.Forms.Label lblAttendanceStatus;
-        private System.Windows.Forms.Label lblAttendanceDate;
-        private System.Windows.Forms.DataGridView dgvStudentData;
 
         #endregion
     }

@@ -14,17 +14,12 @@ namespace Login
 {
     public partial class StudentDashboard : Form
     {
-        private string studentId;
+        private int _studentId;
 
-        public StudentDashboard(string studentId)
+        public StudentDashboard(int studentId)
         {
             InitializeComponent();
-            this.studentId = studentId;
-        }
-
-        private void StudentDashboard_Load(object sender, EventArgs e)
-        {
-            LoadStudentData();
+            _studentId = studentId;
         }
 
         private void LoadStudentData()
@@ -36,44 +31,23 @@ namespace Login
                 {
                     connection.Open();
 
-                    // studentId əsasında tələbənin məlumatlarını əldə edirik
                     string query = "SELECT studentId, studentName, attendanceStatus, attendanceDate, course FROM students WHERE studentId = @StudentId";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@StudentId", studentId);
+                        command.Parameters.AddWithValue("@StudentId", _studentId);
 
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            if (reader.Read())
+                            dgvStudentData.Rows.Clear();
+                            while (reader.Read())
                             {
-                                // Label-lara məlumatları əlavə edirik
-                                lblStudentName.Text = "Tələbə Adı: " + reader.GetString("studentName");
-                                lblStudentId.Text = "Tələbə ID: " + reader.GetInt32("studentId");
-                                lblCourse.Text = "Kurs: " + reader.GetString("course");
-                                lblAttendanceStatus.Text = "Devamiyyət: " + reader.GetString("attendanceStatus");
-                                lblAttendanceDate.Text = "Devamiyyət Tarixi: " + reader.GetDateTime("attendanceDate").ToShortDateString();
+                                int id = reader.GetInt32("studentId");
+                                string name = reader.GetString("studentName");
+                                string status = reader.GetString("attendanceStatus");
+                                DateTime date = reader.GetDateTime("attendanceDate");
+                                string course = reader.GetString("course");
 
-                                // DataGridView ilə tələbənin bütün məlumatlarını göstəririk
-                                dgvStudentData.Rows.Clear();
-                                dgvStudentData.Columns.Clear();
-
-                                dgvStudentData.Columns.Add("StudentId", "Tələbə ID");
-                                dgvStudentData.Columns.Add("StudentName", "Tələbə Adı");
-                                dgvStudentData.Columns.Add("AttendanceStatus", "Devamiyyət");
-                                dgvStudentData.Columns.Add("AttendanceDate", "Devamiyyət Tarixi");
-                                dgvStudentData.Columns.Add("Course", "Kurs");
-
-                                dgvStudentData.Rows.Add(
-                                    reader.GetInt32("studentId"),
-                                    reader.GetString("studentName"),
-                                    reader.GetString("attendanceStatus"),
-                                    reader.GetDateTime("attendanceDate").ToShortDateString(),
-                                    reader.GetString("course")
-                                );
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tələbə məlumatları tapılmadı.", "Xəta", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                dgvStudentData.Rows.Add(id, name, status, date.ToShortDateString(), course);
                             }
                         }
                     }
@@ -83,6 +57,11 @@ namespace Login
                     MessageBox.Show($"Xəta baş verdi: {ex.Message}", "Xəta", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void StudentDashboard_Load(object sender, EventArgs e)
+        {
+            LoadStudentData();
         }
     }
 }

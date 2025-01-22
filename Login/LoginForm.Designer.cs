@@ -109,13 +109,18 @@ namespace Login
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string studentId = txtStudentId.Text.Trim();
+            string studentIdInput = txtStudentId.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            // Giriş məlumatlarının yoxlanılması
-            if (string.IsNullOrWhiteSpace(studentId) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(studentIdInput) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Tələbə ID və ya şifrəni daxil edin.", "Xəta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!int.TryParse(studentIdInput, out int studentId))
+            {
+                MessageBox.Show("Tələbə ID yalnız rəqəm olmalıdır.", "Xəta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -127,12 +132,10 @@ namespace Login
                 {
                     connection.Open();
 
-                    // student_logins cədvəlində tələbənin mövcudluğunu yoxlayırıq
                     string query = "SELECT password FROM student_logins WHERE studentId = @StudentId";
                     using (MySqlCommand command = new MySqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@StudentId", studentId);
-
                         object result = command.ExecuteScalar();
 
                         if (result == null)
@@ -143,14 +146,11 @@ namespace Login
 
                         string storedPasswordHash = result.ToString();
 
-                        // BCrypt ilə şifrənin doğrulanması
                         if (BCrypt.Net.BCrypt.Verify(password, storedPasswordHash))
                         {
-                            // Giriş uğurludur
                             MessageBox.Show("Giriş uğurla tamamlandı.", "Məlumat", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Tələbə öz məlumatlarını görəcəyi forma keçid edir
-                            StudentDashboard studentForm = new StudentDashboard(studentId); // studentId-ni forma ilə ötürürük
+                            StudentDashboard studentForm = new StudentDashboard(studentId);
                             studentForm.Show();
                             this.Hide();
                         }
