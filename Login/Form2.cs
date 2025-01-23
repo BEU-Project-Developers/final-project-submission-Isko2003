@@ -110,6 +110,7 @@ namespace AttendanceSystem
         {
             Form3 form3 = new Form3(students);
             form3.Show();
+            this.Hide();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

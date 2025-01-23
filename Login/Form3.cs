@@ -1,4 +1,5 @@
-﻿using Login.Models;
+﻿using AttendanceSystem;
+using Login.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -131,6 +132,13 @@ namespace Login
         {
             LoadStudentsFromDatabase();
             btnShowAllStudents.Visible = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+            this.Hide();
         }
     }
 }

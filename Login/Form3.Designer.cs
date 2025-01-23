@@ -121,6 +121,7 @@
             button2.TabIndex = 4;
             button2.Text = "Tələbə Əlavə Et Formu";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // btnShowAllStudents
             // 
